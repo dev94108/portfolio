@@ -50,7 +50,7 @@ const CERTS = [
 const SOCIALS = [
   { label: "GitHub", href: "https://github.com/dev94108", icon: GithubIcon },
   { label: "LinkedIn", href: "https://www.linkedin.com/in/dev94108", icon: LinkedinIcon },
-  { label: "LeetCode", href: "https://leetcode.com/", icon: CodeIcon },
+  { label: "LeetCode", href: "https://leetcode.com/u/dev_dv7/", icon: CodeIcon },
   { label: "Email", href: "mailto:dev.verma4561@gmail.com", icon: MailIcon },
 ];
 
@@ -660,7 +660,7 @@ function TimelineCard({ type, title, org, period, meta, bullets }) {
 // ─── Achievements ─────────────────────────────────────────────────────────────
 function Achievements() {
   const stats = [
-    { value: "350+", label: "LeetCode Problems", icon: CodeIcon, color: "text-yellow-400" },
+    { value: "400+", label: "LeetCode Problems", icon: CodeIcon, color: "text-yellow-400" },
     { value: "100", label: "Day Streak Badge", icon: StarIcon, color: "text-orange-400" },
     { value: "8.56", label: "CGPA", icon: TrophyIcon, color: "text-cyan-400" },
     { value: "92%+", label: "Board Scores", icon: TrophyIcon, color: "text-violet-400" },
@@ -701,7 +701,7 @@ function Achievements() {
             </div>
             <div className="ml-auto flex gap-6">
               <div className="text-center">
-                <p className="text-yellow-400 font-bold font-mono text-lg">350+</p>
+                <p className="text-yellow-400 font-bold font-mono text-lg">400+</p>
                 <p className="text-slate-500 text-xs">Problems</p>
               </div>
               <div className="text-center">
