@@ -375,7 +375,7 @@ function Hero() {
                 <p className="pl-6"><span className="text-violet-400">role</span>: <span className="text-green-300">"Full-Stack Dev"</span>,</p>
                 <p className="pl-6"><span className="text-violet-400">university</span>: <span className="text-green-300">"LPU"</span>,</p>
                 <p className="pl-6"><span className="text-violet-400">cgpa</span>: <span className="text-yellow-300">8.56</span>,</p>
-                <p className="pl-6"><span className="text-violet-400">leetcode</span>: <span className="text-yellow-300">350</span><span className="text-slate-400">+ problems</span>,</p>
+                <p className="pl-6"><span className="text-violet-400">leetcode</span>: <span className="text-yellow-300">400</span><span className="text-slate-400">+ problems</span>,</p>
                 <p className="pl-6"><span className="text-violet-400">passion</span>: [</p>
                 <p className="pl-12"><span className="text-green-300">"AI"</span>, <span className="text-green-300">"Web Dev"</span>,</p>
                 <p className="pl-12"><span className="text-green-300">"Open Source"</span></p>
