@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 
 // ─── Data ────────────────────────────────────────────────────────────────
-const NAV_LINKS = ["About", "Skills", "Projects", "Training", "Achievements", "Contact"];
+const NAV_LINKS = ["About", "Skills", "Projects", "Training", "Achievements", "Resume", "Contact"];
 
 const SKILLS = {
   Languages: ["C", "C++", "JavaScript", "PHP", "Python", "Java"],
@@ -43,8 +43,11 @@ const PROJECTS = [
 ];
 
 const CERTS = [
+  { name: "Master Generative AI & Generative AI tools(ChatGPT & more)", org: "Udemy", date: "Aug 2025" },
   { name: "Privacy and Security in Online Social Media", org: "NPTEL", date: "Apr 2025" },
   { name: "Object Oriented Programming", org: "Neocolab", date: "Dec 2024" },
+  { name: "The Bits and Bytes of Computer Networking ", org: "Coursera", date: "Sept 2024" },
+
 ];
 
 const SOCIALS = [
@@ -125,6 +128,50 @@ function StarIcon({ className }) {
   return (
     <svg className={className} fill="currentColor" viewBox="0 0 24 24">
       <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+    </svg>
+  );
+}
+function DownloadIcon({ className }) {
+  return (
+    <svg className={className} fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+      <polyline points="7 10 12 15 17 10" />
+      <line x1="12" y1="15" x2="12" y2="3" />
+    </svg>
+  );
+}
+function FileTextIcon({ className }) {
+  return (
+    <svg className={className} fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+      <polyline points="14 2 14 8 20 8" />
+      <line x1="16" y1="13" x2="8" y2="13" />
+      <line x1="16" y1="17" x2="8" y2="17" />
+      <polyline points="10 9 9 9 8 9" />
+    </svg>
+  );
+}
+function UserIcon({ className }) {
+  return (
+    <svg className={className} fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+      <circle cx="12" cy="7" r="4" />
+    </svg>
+  );
+}
+function ZapIcon({ className }) {
+  return (
+    <svg className={className} fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+      <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+    </svg>
+  );
+}
+function LayersIcon({ className }) {
+  return (
+    <svg className={className} fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+      <polygon points="12 2 2 7 12 12 22 7 12 2" />
+      <polyline points="2 17 12 22 22 17" />
+      <polyline points="2 12 12 17 22 12" />
     </svg>
   );
 }
@@ -333,12 +380,14 @@ function Hero() {
                 View Projects
                 <ExternalLinkIcon className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </button>
-              <button
-                onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
-                className="px-6 py-3 border border-cyan-400/40 text-cyan-400 font-mono text-sm rounded hover:border-cyan-400 hover:bg-cyan-400/5 transition-all duration-200 tracking-widest uppercase"
+              <a
+                href="/resume.pdf"
+                download="Dev_Verma_Resume.pdf"
+                className="group flex items-center gap-2 px-6 py-3 border border-cyan-400/40 text-cyan-400 font-mono text-sm rounded hover:border-cyan-400 hover:bg-cyan-400/5 transition-all duration-200 tracking-widest uppercase"
               >
-                Contact Me
-              </button>
+                Download CV
+                <DownloadIcon className="w-4 h-4 transition-transform group-hover:translate-y-0.5" />
+              </a>
             </div>
 
             {/* Social row */}
@@ -394,6 +443,117 @@ function Hero() {
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-slate-600">
           <span className="font-mono text-xs tracking-widest uppercase">Scroll</span>
           <ChevronDownIcon className="w-4 h-4 animate-bounce" />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ─── About Me (detailed) ──────────────────────────────────────────────────────
+function AboutMe() {
+  const highlights = [
+    {
+      icon: LayersIcon,
+      color: "text-cyan-400",
+      bg: "bg-cyan-400/10 border-cyan-400/20",
+      title: "Full-Stack Web Developer",
+      desc: "I engineer end-to-end web applications — from pixel-perfect React frontends to robust Node.js/Express backends wired to both SQL and NoSQL databases.",
+    },
+    {
+      icon: ZapIcon,
+      color: "text-violet-400",
+      bg: "bg-violet-400/10 border-violet-400/20",
+      title: "AI Integration Enthusiast",
+      desc: "I love bridging modern LLMs and generative AI APIs into real products — turning prompts into presentations, search engines, and intelligent workflows.",
+    },
+    {
+      icon: CodeIcon,
+      color: "text-yellow-400",
+      bg: "bg-yellow-400/10 border-yellow-400/20",
+      title: "DSA & Problem Solver",
+      desc: "400+ LeetCode problems solved with a 100-day streak badge. I approach every engineering challenge with the same analytical mindset I bring to algorithms.",
+    },
+    {
+      icon: UserIcon,
+      color: "text-green-400",
+      bg: "bg-green-400/10 border-green-400/20",
+      title: "Lifelong Learner",
+      desc: "From MERN stack training at Cipher Schools to NPTEL certifications, I'm always upskilling — because the tech landscape never stops moving.",
+    },
+  ];
+
+  return (
+    <section id="aboutme" className="relative py-28 px-6">
+      <div className="max-w-6xl mx-auto">
+        <Reveal>
+          <SectionHeader index="00" title="About Me" subtitle="Who I am & what drives me" />
+        </Reveal>
+
+        <div className="grid md:grid-cols-2 gap-14 mt-14 items-start">
+          {/* Left – narrative */}
+          <Reveal delay={80}>
+            <div className="space-y-5 text-slate-400 leading-relaxed text-sm">
+              <p>
+                Hey, I'm <span className="text-white font-semibold">Dev Verma</span> — a passionate
+                Full-Stack Web Developer and Computer Science Engineering student at{" "}
+                <span className="text-cyan-300">Lovely Professional University</span>, maintaining a
+                CGPA of <span className="text-cyan-300">8.56</span>.
+              </p>
+              <p>
+                I specialise in building complete, production-ready web applications — everything
+                from crafting responsive, accessible frontends with <span className="text-white">React.js</span>{" "}
+                and <span className="text-white">Next.js</span>, to designing scalable RESTful APIs
+                with <span className="text-white">Node.js</span> and <span className="text-white">Express.js</span>,
+                connected to both <span className="text-white">MongoDB</span> and{" "}
+                <span className="text-white">PostgreSQL</span> databases.
+              </p>
+              <p>
+                What excites me most right now is the intersection of{" "}
+                <span className="text-violet-300">AI and web development</span>. I've built
+                AI-powered products using Gemini and designed
+                event-driven architectures using tools like Inngest and Supabase — turning complex
+                LLM capabilities into clean, usable interfaces.
+              </p>
+              <p>
+                Beyond code, I've solved <span className="text-yellow-300">400+ problems on LeetCode</span>{" "}
+                (earning a 100-day streak badge), which keeps my problem-solving sharp and my
+                fundamentals solid. I believe great software is built by developers who can
+                think algorithmically <em>and</em> ship beautifully designed products.
+              </p>
+              <p>
+                I'm currently open to <span className="text-cyan-300">internships</span>,{" "}
+                <span className="text-cyan-300">full-time roles</span>, and{" "}
+                <span className="text-cyan-300">freelance collaborations</span>. If you have an
+                idea worth building, let's talk.
+              </p>
+
+              <div className="pt-4">
+                <a
+                  href="/resume.pdf"
+                  download="Dev_Verma_Resume.pdf"
+                  className="group inline-flex items-center gap-2 px-5 py-2.5 bg-cyan-400 text-[#050d1a] font-bold font-mono text-xs rounded hover:bg-cyan-300 transition-all duration-200 tracking-widest uppercase"
+                >
+                  <DownloadIcon className="w-4 h-4 transition-transform group-hover:translate-y-0.5" />
+                  Download Resume
+                </a>
+              </div>
+            </div>
+          </Reveal>
+
+          {/* Right – highlight cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {highlights.map((h, i) => (
+              <Reveal key={h.title} delay={100 + i * 80}>
+                <div className={`rounded-xl border p-5 ${h.bg} hover:scale-[1.02] transition-transform duration-200`}>
+                  <h.icon className={`w-6 h-6 mb-3 ${h.color}`} />
+                  <h4 className="text-white font-semibold text-sm mb-2" style={{ fontFamily: "'Syne', sans-serif" }}>
+                    {h.title}
+                  </h4>
+                  <p className="text-slate-400 text-xs leading-relaxed">{h.desc}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -531,7 +691,6 @@ function Training() {
         </Reveal>
 
         <div className="mt-14 space-y-8">
-          {/* Timeline item – Training */}
           <Reveal delay={80}>
             <TimelineCard
               type="training"
@@ -546,7 +705,6 @@ function Training() {
             />
           </Reveal>
 
-          {/* Timeline item – LPU */}
           <Reveal delay={160}>
             <TimelineCard
               type="education"
@@ -557,7 +715,6 @@ function Training() {
             />
           </Reveal>
 
-          {/* Timeline item – 12th */}
           <Reveal delay={240}>
             <TimelineCard
               type="education"
@@ -568,7 +725,6 @@ function Training() {
             />
           </Reveal>
 
-          {/* Timeline item – 10th */}
           <Reveal delay={320}>
             <TimelineCard
               type="education"
@@ -582,9 +738,7 @@ function Training() {
 
         {/* Certificates */}
         <Reveal delay={100}>
-          <h3
-            className="font-mono text-xs text-cyan-400/70 tracking-[0.3em] uppercase mt-16 mb-6"
-          >
+          <h3 className="font-mono text-xs text-cyan-400/70 tracking-[0.3em] uppercase mt-16 mb-6">
             &gt; Certifications
           </h3>
         </Reveal>
@@ -716,10 +870,113 @@ function Achievements() {
   );
 }
 
+// ─── Resume ───────────────────────────────────────────────────────────────────
+function Resume() {
+  const highlights = [
+    { label: "Experience", value: "MERN Stack Training", sub: "Cipher Schools · 2025" },
+    { label: "Education", value: "B.Tech CSE", sub: "LPU · CGPA 8.56" },
+    { label: "DSA", value: "400+ Problems", sub: "LeetCode · 100-day badge" },
+    { label: "Stack", value: "Full-Stack", sub: "React · Node · MongoDB · PostgreSQL" },
+  ];
+
+  return (
+    <section id="resume" className="relative py-28 px-6">
+      <div className="max-w-6xl mx-auto">
+        <Reveal>
+          <SectionHeader index="05" title="Resume" subtitle="My experience at a glance" />
+        </Reveal>
+
+        <div className="mt-14 rounded-2xl border border-slate-800 bg-[#0a1628]/60 overflow-hidden">
+          {/* Top gradient bar */}
+          <div className="h-1 w-full bg-gradient-to-r from-cyan-400 via-blue-500 to-violet-500" />
+
+          <div className="p-8 md:p-12">
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+              {/* Left */}
+              <Reveal delay={80}>
+                <div>
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="w-14 h-14 rounded-xl bg-cyan-400/10 border border-cyan-400/30 flex items-center justify-center">
+                      <FileTextIcon className="w-7 h-7 text-cyan-400" />
+                    </div>
+                    <div>
+                      <h3 className="text-white font-bold text-xl" style={{ fontFamily: "'Syne', sans-serif" }}>
+                        Dev Verma
+                      </h3>
+                      <p className="text-slate-400 text-sm font-mono">Full-Stack Developer · AI Enthusiast</p>
+                    </div>
+                  </div>
+
+                  <p className="text-slate-400 text-sm leading-relaxed mb-8">
+                    My resume covers my full-stack development skills, AI project experience,
+                    academic background, certifications, and DSA achievements — everything a
+                    recruiter or collaborator needs to know.
+                  </p>
+
+                  <div className="flex flex-wrap gap-3">
+                    <a
+                      href="/resume.pdf"
+                      download="Dev_Verma_Resume.pdf"
+                      className="group flex items-center gap-2 px-6 py-3 bg-cyan-400 text-[#050d1a] font-bold font-mono text-sm rounded-lg hover:bg-cyan-300 transition-all duration-200 tracking-widest uppercase"
+                    >
+                      <DownloadIcon className="w-4 h-4 transition-transform group-hover:translate-y-0.5" />
+                      Download PDF
+                    </a>
+                    <a
+                      href="/resume.pdf"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="group flex items-center gap-2 px-6 py-3 border border-slate-700 text-slate-300 font-mono text-sm rounded-lg hover:border-cyan-400/50 hover:text-cyan-300 transition-all duration-200 tracking-widest uppercase"
+                    >
+                      <ExternalLinkIcon className="w-4 h-4" />
+                      View Online
+                    </a>
+                  </div>
+
+                  <p className="mt-4 font-mono text-xs text-slate-600">
+                    Last updated · 2025 · PDF format
+                  </p>
+                </div>
+              </Reveal>
+
+              {/* Right – stats grid */}
+              <Reveal delay={160}>
+                <div className="grid grid-cols-2 gap-4">
+                  {highlights.map((h, i) => (
+                    <div
+                      key={h.label}
+                      className="rounded-xl border border-slate-800 bg-[#050d1a]/60 p-5 hover:border-cyan-500/30 transition-colors"
+                    >
+                      <p className="font-mono text-xs text-slate-500 tracking-[0.2em] uppercase mb-2">
+                        {h.label}
+                      </p>
+                      <p className="text-white font-bold text-sm" style={{ fontFamily: "'Syne', sans-serif" }}>
+                        {h.value}
+                      </p>
+                      <p className="text-slate-500 text-xs font-mono mt-1">{h.sub}</p>
+                    </div>
+                  ))}
+                </div>
+              </Reveal>
+            </div>
+          </div>
+        </div>
+
+        {/* Inline hint */}
+        <Reveal delay={200}>
+          <p className="mt-6 text-center font-mono text-xs text-slate-600">
+            &gt; Place your PDF at <span className="text-cyan-400/70">public/resume.pdf</span> for the download to work
+          </p>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
 // ─── Contact ──────────────────────────────────────────────────────────────────
 function Contact() {
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
-  const [status, setStatus] = useState(null); // "sending" | "sent" | "error"
+  const [status, setStatus] = useState(null);
 
   const handleChange = (e) => setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
 
@@ -736,7 +993,7 @@ function Contact() {
     <section id="contact" className="relative py-28 px-6 pb-40">
       <div className="max-w-6xl mx-auto">
         <Reveal>
-          <SectionHeader index="05" title="Contact" subtitle="Let's build something great" />
+          <SectionHeader index="06" title="Contact" subtitle="Let's build something great" />
         </Reveal>
 
         <div className="grid md:grid-cols-2 gap-14 mt-14">
@@ -927,10 +1184,12 @@ export default function App() {
         <Navbar />
         <main className="relative z-10">
           <Hero />
+          <AboutMe />
           <Skills />
           <Projects />
           <Training />
           <Achievements />
+          <Resume />
           <Contact />
         </main>
         <Footer />
